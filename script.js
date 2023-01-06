@@ -29,6 +29,8 @@ function handleNumber(num){
 }
 
 console.log("hi")
+console.log("bye")
+
 
 
 //Read inputs from the user
