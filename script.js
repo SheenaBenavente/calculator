@@ -55,8 +55,20 @@ document.addEventListener("DOMContentLoaded", function() {
     currentScreenContainer.textContent = currentDisplay;
   }));
 
+  decimalBtn.addEventListener("click", function(e) {
+    currentDisplay += ".";
+    currentScreenContainer.textContent = currentDisplay;
+    if (operator === '') {
+      leftValue += ".";
+    } else {
+      rightValue += ".";
+    }
+  });
+
   clearBtn.addEventListener('click', clearInputs);
 });
+
+
 /**
 1.load html content, css
 2.clear input
@@ -90,8 +102,8 @@ function handleNumber(num) {
 function operate() {
   console.log(leftValue, rightValue, operator);
   // Call the appropriate function based on the operator
-  const number1 = parseInt(leftValue);
-  const number2 = parseInt(rightValue);
+  const number1 = parseFloat(leftValue);
+  const number2 = parseFloat(rightValue);
   let result;
 
   if (operator === '+') {
