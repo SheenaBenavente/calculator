@@ -1,6 +1,8 @@
 let operator = '';
 let previousValue = '';
 let calculatedValue = 0;
+let operandCount = 0;
+
 
 let currentDisplay = ''; // This var will be used to track what's shown on screen
 let leftValue = '';
@@ -35,18 +37,20 @@ document.addEventListener("DOMContentLoaded", function() {
     currentScreenContainer.textContent = '';
   });
 
-  //Grabs the numbers from the DOM when element is clicked
-  numberBtns.forEach((number) => number.addEventListener("click", function(e) {
-    // handleNumber(e.target.textContent)
-    currentDisplay += e.target.textContent;
-    currentScreenContainer.textContent = currentDisplay;
+//Grabs the numbers from the DOM when element is clicked
+numberBtns.forEach((number) => number.addEventListener("click", function(e) {
+  if (operandCount < 15) {
+      currentDisplay += e.target.textContent;
+      currentScreenContainer.textContent = currentDisplay;
+      operandCount++;
 
-    if (operator === '') {
-      leftValue += e.target.textContent;
-    } else {
-      rightValue += e.target.textContent;
-    }
-  }));
+      if (operator === '') {
+        leftValue += e.target.textContent;
+      } else {
+        rightValue += e.target.textContent;
+      }
+  }
+}));
 
   operatorBtns.forEach((operatorBtn) => operatorBtn.addEventListener("click", function(e) {
     operator = e.target.textContent;
